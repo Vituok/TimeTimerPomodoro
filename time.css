@@ -1,0 +1,123 @@
+.none{
+display: none;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 10px;
+    padding-bottom: 20px;
+}
+button{
+
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  height: auto;
+  width: auto;
+  outline: none;
+  overflow: hidden;
+  padding: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover{
+    background-color: #29292E;
+    color: rgb(255, 204, 76);
+}
+
+button:focus {
+    background-color: #29292E;
+    color: rgb(255, 204, 76);
+}
+
+
+
+body{
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #121212;
+    min-height: 100vh;
+}         
+
+.timer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.inputTime{
+    font-size: 18px;
+    line-height: 160%;
+}
+
+.inputTime input{
+    width: 40px;
+    background: none;
+    border: none;
+    text-align: center;
+    font-weight: 700;
+    color: var(--anti-accent);
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+
+.countdown{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.num{
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 160px;
+    line-height: 1;
+    font-style: normal;
+    background-color: #29292E;
+    padding: 40px 16px;
+    border-radius: 8px;
+}
+
+.dots{
+    font-size: 160px;
+}
+
+.button{
+    border-radius: 8px;
+    background-color: #29292E;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    padding: 17px;
+    font-size: 16px;
+    font-weight: 700;
+    color:white;
+}
