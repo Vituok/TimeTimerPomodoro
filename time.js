@@ -21,9 +21,6 @@ const min = document.getElementById("min")
 const sec_tens = document.getElementById("sec_tens")
 const sec = document.getElementById("sec")
 
-//function for start & stop Time
-
-
 function updateTime(){
 
     console.log("Lets Go")
@@ -38,19 +35,25 @@ function updateTime(){
     
 }
 const myInterval = setInterval(updateTime, 100); 
-        
+
+//function for start & stop Time
+
 function myStop() {
 
-    clearInterval(myInterval)
-    console.log('STOPED')
+clearInterval(myInterval)
+console.log('STOPED')
 
-    min_tens.textContent = 0 
-    min.textContent = 0
-    sec_tens.textContent = 0 
-    sec.textContent = 0
+min_tens.textContent = 0 
+min.textContent = 0
+sec_tens.textContent = 0 
+sec.textContent = 0
 
 }
     
+function restartInterval() {
+    clearInterval(myInterval);
+    updateTime();
+}
 
 
 //POMODORO
@@ -88,6 +91,7 @@ pomodoroBtn.addEventListener('click',()=>{
 //Timer
 timerBtn.addEventListener('click',()=>{
   
+    
 
     pomodoroBtn.classList.remove('activeBtn')
     timeBtn.classList.remove('activeBtn')
@@ -116,20 +120,8 @@ if (timerBtn.classList.contains('activeBtn')){
 
 timeBtn.addEventListener('click',()=>{
 
-    pomodoroBtn.classList.remove('activeBtn')
-    timeBtn.classList.add('activeBtn')
-    timerBtn.classList.remove('activeBtn')
-
-    
-    IntervalPomodoro.classList.add("none")
-    pomodoroStartBtn.classList.add('none')
-
-    timerStartBtn.classList.add('none')
-    inputTime.classList.add('none')
-
-    myInterval
-    
-    
+    location.reload();
+   
 })
 
 
