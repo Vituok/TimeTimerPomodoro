@@ -1,9 +1,14 @@
 
 
-//header
+//header menu btn
 const timerBtn = document.getElementById('timerBtn')
 const timeBtn = document.getElementById('timeBtn')
 const pomodoroBtn = document.getElementById('pomodoroBtn')
+
+//div time | div timer | div pomodoro
+const timer = document.getElementById('timer')
+const time = document.getElementById('time')
+const pomodoro = document.getElementById('pomodoro')
 
 //start btn for timer & pomodoro
 const timerStartBtn = document.getElementById('timerStartBtn')
@@ -15,12 +20,25 @@ const IntervalPomodoro = document.getElementById("IntervalPomodoro")
 //div for Timer --- input time 
 const inputTime = document.getElementById('inputTime')
 
-//clock numbers  | 00:00 |
-const min_tens = document.getElementById("min_tens")
-const min = document.getElementById("min")
-const sec_tens = document.getElementById("sec_tens")
-const sec = document.getElementById("sec")
+//clock numbers for TIME  | 00:00 |
+const timeMinTens = document.getElementById("timeMinTens")
+const timeMin = document.getElementById("timeMin")
+const timeSecTens = document.getElementById("timeSecTens")
+const timeSec = document.getElementById("timeSec")
 
+//clock numbers for TIME  | 00:00 |
+const timerMinTens = document.getElementById("timerMinTens")
+const timerMin = document.getElementById("timerMin")
+const timerSecTens = document.getElementById("timerSecTens")
+const timerSec = document.getElementById("timerSec")
+
+//clock numbers for TIME  | 00:00 |
+const pomodoroMinTens = document.getElementById("pomodoroMinTens")
+const pomodoroMin = document.getElementById("pomodoroMin")
+const pomodoroSecTens = document.getElementById("pomodoroSecTens")
+const pomodoroSec = document.getElementById("pomodoroSec")
+
+//function for start
 function updateTime(){
 
     console.log("Lets Go")
@@ -28,33 +46,51 @@ function updateTime(){
     const hours = now.getHours()
     const minutes = now.getMinutes()
         
-    min_tens.textContent = Math.floor(hours/10) 
-    min.textContent = hours % 10
-    sec_tens.textContent = Math.floor(minutes/10) 
-    sec.textContent = minutes % 10
+    timeMinTens.textContent = Math.floor(hours/10) 
+    timeMin.textContent = hours % 10
+    timeSecTens.textContent = Math.floor(minutes/10) 
+    timeSec.textContent = minutes % 10
     
 }
-const myInterval = setInterval(updateTime, 100); 
+const myInterval = setInterval(updateTime, 1000); 
+  
 
-//function for start & stop Time
 
-function myStop() {
 
-clearInterval(myInterval)
-console.log('STOPED')
 
-min_tens.textContent = 0 
-min.textContent = 0
-sec_tens.textContent = 0 
-sec.textContent = 0
 
-}
-    
-function restartInterval() {
-    clearInterval(myInterval);
-    updateTime();
-}
+//Time
 
+
+timeBtn.addEventListener('click',()=>{
+
+    pomodoroBtn.classList.remove('activeBtn')
+    timeBtn.classList.add('activeBtn')
+    timerBtn.classList.remove('activeBtn')
+
+    pomodoro.classList.add('none')
+    time.classList.remove('none')
+    timer.classList.add('none')
+
+
+  
+   
+})
+
+
+
+// //function for stop Time
+// function myStop() {
+
+// clearInterval(myInterval)
+// console.log('STOPED')
+
+// min_tens.textContent = 0 
+// min.textContent = 0
+// sec_tens.textContent = 0 
+// sec.textContent = 0
+
+// }
 
 //POMODORO
 
@@ -64,11 +100,10 @@ pomodoroBtn.addEventListener('click',()=>{
     timeBtn.classList.remove('activeBtn')
     timerBtn.classList.remove('activeBtn')
 
-    timerStartBtn.classList.add('none')
-    inputTime.classList.add('none')
+    pomodoro.classList.remove('none')
+    time.classList.add('none')
+    timer.classList.add('none')
 
-    pomodoroStartBtn.classList.remove('none')
-    IntervalPomodoro.classList.remove("none")
 
 
 
@@ -91,38 +126,18 @@ pomodoroBtn.addEventListener('click',()=>{
 //Timer
 timerBtn.addEventListener('click',()=>{
   
-    
-
     pomodoroBtn.classList.remove('activeBtn')
     timeBtn.classList.remove('activeBtn')
     timerBtn.classList.add('activeBtn')
 
-    inputTime.classList.remove('none')
-    timerStartBtn.classList.remove('none')
+    pomodoro.classList.add('none')
+    time.classList.add('none')
+    timer.classList.remove('none')
 
-    IntervalPomodoro.classList.add("none")
-    pomodoroStartBtn.classList.add('none')
 })
 
-if (timerBtn.classList.contains('activeBtn')){
-
-    min_tens.innerHTML === 0
-    min.innerHTML === 0
-    sec_tens.innerHTML === 0
-    sec.innerHTML = 0
-
-}
 
 
-
-//Time
-
-
-timeBtn.addEventListener('click',()=>{
-
-    location.reload();
-   
-})
 
 
 

@@ -7,64 +7,124 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="time.css">
+
 </head>
 <body>
 
 
-<!-- header -->
-<div class="menu">
-    <div class="">
-        <button onclick="myStop()" role="button" class="btn" id="timerBtn">Timer</button>
-        <button onclick="restartInterval()" role="button" class="btn activeBtn" id="timeBtn">Time</button>
-        <button onclick="myStop()" role="button" class="btn" id="pomodoroBtn">Pomodoro</button>
+   
+   
+
+    <div class="menu">
+        <button role="button" class="btn" id="timerBtn">Timer</button>
+        <button role="button" class="btn activeBtn" id="timeBtn">Time</button>
+        <button role="button" class="btn" id="pomodoroBtn">Pomodoro</button>
     </div>
 
 
+
+
+
+<!-- Time -->
+
+    <div id="time" class="time">
+    
+            
+    <!--       clock numbers for time  | 00:00 |            -->      
+        <div class="countdown">
+            <div class="num" id="timeMinTens">0</div>
+            <div class="num" id="timeMin">0</div>
+            <div class="dots">:</div>
+            <div class="num" id="timeSecTens">0</div>
+            <div class="num" id="timeSec">0</div>
+        </div>
+            
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- header for timer -->
+
+<div id="timer" class="timer none">
+
+
+    <!-- inputTime for Timer -->
+    <div id='inputTime' class="timerInput">
+        Установить время на 
+        <input type="number" name="time" id="TimerInputMin" value="10">
+        минут
+    </div>
+
+     <!--       clock numbers  | 00:00 |            -->
+
+     <div class="countdown">
+        <div class="num" id="timerMinTens">0</div>
+        <div class="num" id="timerMin">0</div>
+        <div class="dots">:</div>
+        <div class="num" id="timerSecTens">0</div>
+        <div class="num" id="timerSec">0</div>
+    </div>
+
+    <button id="timerStartBtn" class="button">
+        Go
+    </button>
+
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- header for pomodoro -->
+<div id="pomodoro" class="pomodoro none">
+
     <!-- IntervalPomodoro -->
-    <div id="IntervalPomodoro" class="IntervalPomodoro none">
+    <div id="IntervalPomodoro" class="IntervalPomodoro">
         <button id="Pomodoro" class="">Pomodoro</span></button>
         <button id="ShortBreak" class="">ShortBreak</span></button>
         <button id="LongBreak" class="">LongBreak</span></button>
     </div>
-</div>
-
-
-
-<!-- inputTime for Timer -->
-        <div id='inputTime' class="inputTime none">
-            Установить время на 
-            <input type="number" name="time" id="inputMin" value="10">
-            минут
-        </div>
-
 
 
     <!--       clock numbers  | 00:00 |            -->
 
-        <div class="countdown">
-            <div class="num" id="min_tens">0</div>
-            <div class="num" id="min">0</div>
-            <div class="dots">:</div>
-            <div class="num" id="sec_tens">0</div>
-            <div class="num" id="sec">0</div>
-        </div>
+    <div class="countdown">
+        <div class="num" id="pomodoroMinTens">0</div>
+        <div class="num" id="pomodoroMin">0</div>
+        <div class="dots">:</div>
+        <div class="num" id="pomodoroSecTens">0</div>
+        <div class="num" id="pomodoroSec">0</div>
+    </div>
 
-
-<!--   2 button (1 for timer & 1 for pomodoro)   -->
-
-<div id="submitBtn" class="">
-
-    <button id="timerStartBtn" class="button none">
+    <button id="pomodoroStartBtn" class="button ">
         Go
     </button>
 
-    <button id="pomodoroStartBtn" class="button none">
-        Go
-    </button>
 </div>
-    
 
-    <script src="time.js"></script>
+
+    <script src="time.js" type="module"></script>
 </body>
 </html>
