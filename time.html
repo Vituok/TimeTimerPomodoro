@@ -10,22 +10,37 @@
     <link rel="stylesheet" href="time.css">
 </head>
 <body>
-    <div class="menu">
-        <button type="submit" role="button" class="btn" id="timerBtn">Timer</button>
-        <button type="submit" role="button" class="btn" id="timeBtn">Time</button>
-        <button type="submit" role="button" class="btn" id="pomodoroBtn">Pomodoro</button>
+
+
+<!-- header -->
+<div class="menu">
+    <div class="">
+        <button onclick="myStop()" role="button" class="btn" id="timerBtn">Timer</button>
+        <button  role="button" class="btn activeBtn" id="timeBtn">Time</button>
+        <button onclick="myStop()" role="button" class="btn" id="pomodoroBtn">Pomodoro</button>
     </div>
 
 
-<div class="clock">
+    <!-- IntervalPomodoro -->
+    <div id="IntervalPomodoro" class="IntervalPomodoro none">
+        <button id="Pomodoro" class="">Pomodoro</span></button>
+        <button id="ShortBreak" class="">ShortBreak</span></button>
+        <button id="LongBreak" class="">LongBreak</span></button>
+    </div>
+</div>
 
 
 
-        <div id='inputTime' class="inputTime">
+<!-- inputTime for Timer -->
+        <div id='inputTime' class="inputTime none">
             Установить время на 
             <input type="number" name="time" id="inputMin" value="10">
             минут
         </div>
+
+
+
+    <!--       clock numbers  | 00:00 |            -->
 
         <div class="countdown">
             <div class="num" id="min_tens">0</div>
@@ -35,18 +50,18 @@
             <div class="num" id="sec">0</div>
         </div>
 
+
+<!--   2 button (1 for timer & 1 for pomodoro)   -->
+
 <div id="submitBtn" class="">
 
-    <button type="submit" class="button">
-        Запустить таймер
+    <button id="timerStartBtn" class="button none">
+        Go
     </button>
 
-</div>
-        
-
-
-    </form>
-      
+    <button id="pomodoroStartBtn" class="button none">
+        Go
+    </button>
 </div>
     
 

@@ -1,5 +1,5 @@
 .none{
-display: none;
+display: none !important
 }
 
 .menu{
@@ -37,12 +37,12 @@ button{
   touch-action: manipulation;
 }
 
-button:hover{
+.activeBtn{
     background-color: #29292E;
     color: rgb(255, 204, 76);
 }
 
-button:focus {
+button:hover {
     background-color: #29292E;
     color: rgb(255, 204, 76);
 }
@@ -60,7 +60,29 @@ body{
     color: white;
     background-color: #121212;
     min-height: 100vh;
-}         
+}    
+
+/* P O M O D O R O */
+
+.selectIntervalPomodoro{
+display: flex;
+gap: 20px;
+margin-bottom: 20px;
+
+}
+.selectIntervalPomodoro button{
+    border-radius: 50px;
+}
+
+.clock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+
+
+
 
 .timer{
     display: flex;
@@ -73,6 +95,7 @@ body{
 .inputTime{
     font-size: 18px;
     line-height: 160%;
+    margin-bottom: 10px;
 }
 
 .inputTime input{
