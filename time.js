@@ -1,6 +1,6 @@
 
 
-//header menu btn
+//header Menu btn
 const timerBtn = document.getElementById('timerBtn')
 const timeBtn = document.getElementById('timeBtn')
 const pomodoroBtn = document.getElementById('pomodoroBtn')
@@ -10,38 +10,78 @@ const timer = document.getElementById('timer')
 const time = document.getElementById('time')
 const pomodoro = document.getElementById('pomodoro')
 
-//start btn for timer & pomodoro
-const timerStartBtn = document.getElementById('timerStartBtn')
-const pomodoroStartBtn = document.getElementById('pomodoroStartBtn')
 
-//div of pomodoro --- 3 button - select time
-const IntervalPomodoro = document.getElementById("IntervalPomodoro")
-
-//div for Timer --- input time 
-const inputTime = document.getElementById('inputTime')
-
+// ___________________________________________________________________________Time
 //clock numbers for TIME  | 00:00 |
 const timeMinTens = document.getElementById("timeMinTens")
 const timeMin = document.getElementById("timeMin")
 const timeSecTens = document.getElementById("timeSecTens")
 const timeSec = document.getElementById("timeSec")
 
-//clock numbers for TIME  | 00:00 |
+
+
+// ___________________________________________________________________________Timer
+//clock numbers for TIMER  | 00:00 |
 const timerMinTens = document.getElementById("timerMinTens")
 const timerMin = document.getElementById("timerMin")
 const timerSecTens = document.getElementById("timerSecTens")
 const timerSec = document.getElementById("timerSec")
 
-//clock numbers for TIME  | 00:00 |
+//Timer --- input time 
+const timerInputTime = document.getElementById('TimerInputTime')
+const TimerInputMin = document.getElementById('TimerInputMin')
+
+// buttons for timer
+const timerStartBtn = document.getElementById('timerStartBtn').addEventListener("click",timerStart)
+const timerStopBtn = document.getElementById('timerStopBtn').addEventListener("click",timerStop)
+
+
+
+// ___________________________________________________________________________Pomodoro
+//clock numbers for POMODORO  | 00:00 |
 const pomodoroMinTens = document.getElementById("pomodoroMinTens")
 const pomodoroMin = document.getElementById("pomodoroMin")
 const pomodoroSecTens = document.getElementById("pomodoroSecTens")
 const pomodoroSec = document.getElementById("pomodoroSec")
 
+//start btn for pomodoro
+const pomodoroStartBtn = document.getElementById('pomodoroStartBtn')
+
+//div of pomodoro --- 3 button - select time
+const IntervalPomodoro = document.getElementById("IntervalPomodoro")
+
+
+
+//___________________________________________________________________________TIMER
+let timerInterval;
+
+let i = 0
+function timerStart(){
+
+    if(!timerInterval){
+        timerInterval = setInterval(timerFinalStart, 1000)
+    }
+
+}
+
+
+function timerFinalStart(){
+    i+=1
+    console.log(i)
+}
+
+function timerStop(){
+    clearInterval(timerInterval)
+    timerInterval = null
+}
+
+
+
+
 //function for start
 function updateTime(){
 
-    console.log("Lets Go")
+
     const now = new Date()
     const hours = now.getHours()
     const minutes = now.getMinutes()
@@ -53,14 +93,11 @@ function updateTime(){
     
 }
 const myInterval = setInterval(updateTime, 1000); 
+
   
 
 
-
-
-
 //Time
-
 
 timeBtn.addEventListener('click',()=>{
 
@@ -72,25 +109,14 @@ timeBtn.addEventListener('click',()=>{
     time.classList.remove('none')
     timer.classList.add('none')
 
-
-  
+   
+ 
    
 })
 
 
 
-// //function for stop Time
-// function myStop() {
 
-// clearInterval(myInterval)
-// console.log('STOPED')
-
-// min_tens.textContent = 0 
-// min.textContent = 0
-// sec_tens.textContent = 0 
-// sec.textContent = 0
-
-// }
 
 //POMODORO
 
@@ -133,6 +159,7 @@ timerBtn.addEventListener('click',()=>{
     pomodoro.classList.add('none')
     time.classList.add('none')
     timer.classList.remove('none')
+
 
 })
 
