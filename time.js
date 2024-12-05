@@ -45,7 +45,7 @@ const pomodoroSecTens = document.getElementById("pomodoroSecTens")
 const pomodoroSec = document.getElementById("pomodoroSec")
 
 //start btn for pomodoro
-const pomodoroStartBtn = document.getElementById('pomodoroStartBtn')
+const pomodoroStopBtn = document.getElementById('pomodoroStopBtn')
 
 //div of pomodoro --- 3 button - select time
 const IntervalPomodoro = document.getElementById("IntervalPomodoro")
@@ -54,7 +54,9 @@ const Pomodoro = document.getElementById("Pomodoro")
 const ShortBreak = document.getElementById("ShortBreak")
 const LongBreak = document.getElementById("LongBreak")
 
-
+const newPomodoro = document.getElementById("newPomodoro")
+const newShortBreak = document.getElementById("newShortBreak")
+const newLongBreak = document.getElementById("newLongBreak")
 
 //___________________________________________________________________________TIMER
 
@@ -80,30 +82,26 @@ function timerRestart(){
 
 function timerFinalStart(){
     
-    let value =document.getElementById('TimerInputMin').value
+    let value = document.getElementById('TimerInputMin').value
 
     let timerNow = (value*60) - i
     if (timerNow > 0){
         i+=1; 
     }
-    
-        let timeLeftInMin = Math.floor(timerNow / 60)
+
+    let timeLeftInMin = Math.floor(timerNow / 60)
         
     timerMinTens.textContent = Math.floor((timerNow / 60)/10) 
     timerMin.textContent = Math.floor(timerNow/60) % 10
     timerSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
     timerSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
-    
 }
+
 
 function timerStop(){
     clearInterval(timerInterval)
     timerInterval = null
 }
-
-
-
-
 
 
 //function for start
@@ -158,69 +156,85 @@ pomodoroBtn.addEventListener('click',()=>{
     time.classList.add('none')
     timer.classList.add('none')
 
-    Pomodoro.addEventListener("click", pomodoroStart);
-    ShortBreak.addEventListener("click", ShortBreakFunction);
-    LongBreak.addEventListener("click", LongBreakFunction);
-
-    let pomodoroInterval;
-
-    let i = 0
-    function pomodoroStart(){
-    
-        
-    
-        if(!pomodoroInterval){
-            pomodoroInterval = setInterval(PomodoroFunction, 1000)
-        }
-    
-    } 
-      
-
-    function PomodoroFunction(){
-        
-        let timerNow = (25*60) - i
-        i+=1; 
-        let timeLeftInMin = Math.floor(timerNow / 60)
-    
-        pomodoroMinTens.textContent = Math.floor((timerNow / 60)/10) 
-        pomodoroMin.textContent = Math.floor(timerNow/60) % 10
-        pomodoroSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
-        pomodoroSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
-        
-    }
-    
-    function ShortBreakFunction(){
-    
-        let timerNow = (5*60) - i
-        i+=1; 
-        let timeLeftInMin = Math.floor(timerNow / 60)
-    
-        pomodoroMinTens.textContent = Math.floor((timerNow / 60)/10) 
-        pomodoroMin.textContent = Math.floor(timerNow/60) % 10
-        pomodoroSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
-        pomodoroSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
-        
-    }
-
-    
-    
-    function LongBreakFunction(){
-    
-        let timerNow = (15*60) - i
-        i+=1; 
-        let timeLeftInMin = Math.floor(timerNow / 60)
-    
-        pomodoroMinTens.textContent = Math.floor((timerNow / 60)/10) 
-        pomodoroMin.textContent = Math.floor(timerNow/60) % 10
-        pomodoroSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
-        pomodoroSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
-        
-    }
-
-
 })
 
 
+
+const arr = [25,5,15];
+
+Pomodoro.addEventListener("click",  ()=>{
+    newBtn(), pomodoroTime(arr[0]);
+});
+ShortBreak.addEventListener("click", ()=>{
+    newBtn(), pomodoroTime(arr[1]);
+}); 
+LongBreak.addEventListener("click", ()=>{
+    newBtn(), pomodoroTime(arr[2]);
+});
+
+
+newPomodoro.addEventListener("click", ()=>{
+    pomodoroRestart(), pomodoroTime(arr[0]);
+});
+newShortBreak.addEventListener("click", ()=>{
+    pomodoroRestart(), pomodoroTime(arr[1]);
+}); 
+newLongBreak.addEventListener("click", ()=>{
+    pomodoroRestart(), pomodoroTime(arr[2]);
+});
+
+
+function newBtn(){
+    Pomodoro.classList.add("none")
+    ShortBreak.classList.add("none")
+    LongBreak.classList.add("none")
+
+    newPomodoro.classList.remove("none")
+    newShortBreak.classList.remove("none")
+    newLongBreak.classList.remove("none")
+
+}
+
+
+let pomodoroInterval
+
+
+pomodoroStopBtn.addEventListener("click", () => {
+    clearInterval(pomodoroInterval)
+})
+
+
+function pomodoroRestart(){
+    clearInterval(pomodoroInterval);
+    i = 0;
+    console.log("stop")
+} 
+
+function pomodoroTime(time){                                               //Pomodoro
+    let i = 0
+    console.log("1 step")
+        
+    function pomodoroStart(){
+        console.log("2step")
+        let timerNow = (time * 60) - i
+
+        if (timerNow > 0){ 
+            i+=1;
+        } 
+
+        let timeLeftInMin = Math.floor(timerNow / 60)
+        
+        pomodoroMinTens.textContent = Math.floor((timerNow / 60)/10) 
+        pomodoroMin.textContent = Math.floor(timerNow/60) % 10
+        pomodoroSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
+        pomodoroSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
+    }  
+
+
+    
+    pomodoroInterval = setInterval(pomodoroStart, 1000)
+        
+}
 
 
 
