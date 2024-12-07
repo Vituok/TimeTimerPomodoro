@@ -32,7 +32,7 @@ const timerInputTime = document.getElementById('TimerInputTime')
 const TimerInputMin = document.getElementById('TimerInputMin')
 
 // buttons for timer
-const timerStartBtn = document.getElementById('timerStartBtn').addEventListener("click",timerStart)
+const timerStartBtn = document.getElementById('timerStartBtn').addEventListener("click",timerFinalStart)
 const timerStopBtn = document.getElementById('timerStopBtn').addEventListener("click",timerStop)
 
 
@@ -60,42 +60,51 @@ const newLongBreak = document.getElementById("newLongBreak")
 
 //___________________________________________________________________________TIMER
 
-let newValue =document.getElementById('TimerInputMin').addEventListener("change", timerRestart) 
+let newValue =document.getElementById('TimerInputMin').addEventListener("change",timerStop, timerRestart) 
 
 let timerInterval;
-
-let i = 0
-function timerStart(){
-
-    
-
-    if(!timerInterval){
-        timerInterval = setInterval(timerFinalStart, 1000)
-    }
-
-} 
  
 function timerRestart(){
-    i = 0;
+    clearInterval(timerInterval)
+    timerInterval = null
+    
     timerFinalStart()
 }
 
 function timerFinalStart(){
-    
-    let value = document.getElementById('TimerInputMin').value
+    let timerNow
+    let value = Number(document.getElementById('TimerInputMin').value)
+    let i = 0;
+        function timerBrain(){
 
-    let timerNow = (value*60) - i
-    if (timerNow > 0){
-        i+=1; 
-    }
+            if (value > 0){
 
-    let timeLeftInMin = Math.floor(timerNow / 60)
-        
-    timerMinTens.textContent = Math.floor((timerNow / 60)/10) 
-    timerMin.textContent = Math.floor(timerNow/60) % 10
-    timerSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
-    timerSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
-}
+                timerNow = (value*60) - i
+                if (timerNow > -1){
+                    i+=1; 
+                    console.log("+")
+                    
+            let timeLeftInMin = Math.floor(timerNow / 60)
+                
+            timerMinTens.textContent = Math.floor((timerNow / 60)/10) 
+            timerMin.textContent = Math.floor(timerNow/60) % 10
+            timerSecTens.textContent = Math.floor((timerNow - (timeLeftInMin * 60))/10)
+            timerSec.textContent = (timerNow - (timeLeftInMin * 60)) % 10
+
+                }
+            }else{ 
+                console.log(value)
+                timerMinTens.textContent = "0";
+                timerMin.textContent = "0";
+                timerSecTens.textContent = "0";
+                timerSec.textContent = "0";
+                 clearInterval(timerInterval)
+            }
+
+
+        }
+    timerInterval = setInterval(timerBrain, 1000)
+ }
 
 
 function timerStop(){
@@ -206,7 +215,7 @@ pomodoroStopBtn.addEventListener("click", () => {
 
 function pomodoroRestart(){
     clearInterval(pomodoroInterval);
-    i = 0;
+    let i = 0;
     console.log("stop")
 } 
 
